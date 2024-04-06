@@ -1,0 +1,123 @@
+<style>
+    body {
+        text-align: center;
+        color: #fff;
+    }
+    .blogpage a {
+        justify-content: end;
+        text-decoration: none;
+        color: #fff;
+    }
+    .container {
+        margin: 20px;
+    }
+    .blog04 {
+        padding: 15px;
+        border: 1px solid #aaa;
+        position: relative;
+        margin-bottom: 20px;
+        background-color: rgb(104, 104, 104);
+    }
+
+    .article04 {
+        margin-top: 10px;
+    }
+    .read04 {
+        margin-top: 30px;
+    }
+    .blogindex {
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+    .read04 img {
+        width: 180px;
+        top: 5px;
+        left: 5px;
+        position: absolute;
+        float: left;
+    }
+    .blog04::before, blog04::after {
+        content: '';
+        position: absolute;
+        left: -5px;
+        top: -5px;
+        background: linear-gradient(
+            45deg, 
+            #e6fb04, #ff7300, #6e0dd0, #00ff66,
+            #ff0099, #002bff, #ff00c8, #ea0c04, 
+            #ab00fd, #aafb14, #aaa00f
+        );
+        background-size: 300%;
+        width: calc(100% + 10px);
+        height: calc(100% + 10px);
+        z-index: -1;
+        animation: neonanimate 20s linear infinite;
+        display: none;
+    }
+    .blog04:hover::before, blog04:hover::after {
+        display: block;
+    }
+    @keyframes neonanimate {
+        0% {
+            background-position: 0 0;
+        }
+        50% {
+            background-position: 400% 0;
+        }
+        100% {
+            background-position: 0 0;
+        }
+    }
+    @media (max-width: 1200px) {
+        .blog04 {
+            padding: 15px;
+            border: 1px solid #aaa;
+            position: relative;
+            margin-bottom: 20px;
+            background-color: rgb(104, 104, 104);
+            font-size: 12px;
+        }
+        .article04 {
+            margin-top: 10px;
+        }
+        .read04 {
+            margin-top: 30px;
+        }
+        .blogindex {
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        .blogpage a {
+            font-size: 60%;
+        }
+        .read04 img {
+            width: 140px;
+            top: 6px;
+            left: 6px;
+        }
+    }
+    @media (max-width: 500px) {
+        .container {
+            padding: 20px;
+            margin: 0;
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="blog04">
+        <h1>雨夜</h1>
+        <div class="read04">
+            <img src="pic/blog/04.jpg" alt="">
+            <a href="#" onclick="getArticle('article04')">閱讀更多</a>
+        </div>
+        <div class="article04" id="article04">
+            
+        </div>
+    </div>
+
+    <div class="blogpage">
+        <a href="#" onclick="getData('blogindex')">上一頁</a>
+    </div>
+</div>
+

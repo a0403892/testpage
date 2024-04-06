@@ -1,0 +1,114 @@
+    <style>
+        .premier-ehome {
+            text-align: center;
+        }
+        .premiere-home img {
+            text-align: center;
+            width: 100%;
+        }
+        .premiere-container {
+            position: relative;
+            font-size: 24px;
+            color: #fff;
+            text-align: center;
+        }
+        @keyframes appear {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+                display: none;
+            }
+        }
+        .premiere-content1 {
+            left: 31%;
+            bottom: 15px;
+            position: absolute;
+            animation: appear 4s ease forwards;
+            opacity: 0;
+        }
+        .premiere-content2 {
+            left: 19%;
+            bottom: 15px;
+            position: absolute;
+            animation: appear 8s ease forwards;
+            opacity: 0;
+            animation-delay: 4s;
+        }
+        .premiere-content3 {
+            left: 23%;
+            bottom: 15px;
+            position: absolute;
+            animation: appear 4s ease forwards;
+            opacity: 0;
+            animation-delay: 16s;
+        }
+        .premiere-content4 {
+            left: 22%;
+            bottom: 15px;
+            position: absolute;
+            animation: appear 6s ease forwards;
+            opacity: 0;
+            animation-delay: 20s;
+        }
+        @keyframes disappear {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+        @keyframes appear2 {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @media (max-width: 1200px) {
+            .premiere-home {
+                margin: 50px 100px;
+            }
+            .premiere-home img {
+                width: 100%;
+            }
+            .premiere-container {
+                font-size: 18px;
+            }
+        }
+        @media (max-width: 500px) {
+            .premiere-home {
+                margin: 10px;
+            }
+            .premiere-home img {
+                width: 100%;
+            }
+            .content {
+                height: 350px;
+            }
+            .premiere-container {
+                font-size: 14px;
+            }
+        }
+    </style>
+    
+    <div class="premiere-home">
+        <img src="pic/倉頡.gif" alt="">
+    </div>
+    <div class="premiere-container">
+        <div class="premiere-content1">
+            在圖片上置入After Effect特效
+        </div>
+        <div class="premiere-content2">
+            設定錨點與錨點間的背景對比度以達到動態效果
+        </div>
+        <div class="premiere-content3">
+            置入外部圖片並設定遮罩將文字逐字浮現
+        </div>
+        <div class="premiere-content4">
+            置入After Effect效果並將背景設定漸暗淡出
+        </div>
+    </div>

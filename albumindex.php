@@ -1,0 +1,128 @@
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .albumindex {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(140px, 1fr)); /* 每列最小寬度180px，最大寬度為可用空間的1個等分寬 */
+            flex-wrap: wrap; /* 讓子元素換行 */
+            gap: 5px; /* 相簿與相簿間隔5px */
+            justify-content: space-around;
+            text-align: center;
+            margin: 10px;
+        }
+        .albumindex a {
+            border: 1px solid #fff;
+        }
+        .albumindex a:hover {
+            background: linear-gradient(to top left, #FF60AF, rgba(0, 0, 0, 0.5));
+        }
+
+        .albumindex img {
+            width: auto; /* 圖片寬度自動 */
+            max-width: 140px;
+            height: 100px; 
+            object-fit: cover; /* 保持圖片比例並填滿容器 */
+            margin: 10px;
+        }
+        .albumtitle {
+            margin-top: 3px; /* 添加文字與圖片之間的上邊距 */
+        }
+
+        .marquee {
+            white-space: nowrap;
+            background-color: #eee;
+            text-align: right;
+            overflow: hidden;
+        }
+        .scrollContent {
+            color: rebeccapurple;
+            width: 100%;
+            padding-right: 0;
+            animation: loop 10s linear infinite;
+            font-family: fantasy;
+        }
+        @keyframes loop {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        @media (max-width: 1200px) {
+            .albumindex {
+                font-size:12px;
+            }
+            .albumindex p {
+                font-size:10px;
+            }
+            .albumindex img {
+                width: auto; /* 圖片寬度自動 */
+                max-width: 100px;
+                height: 90px; 
+                object-fit: cover; /* 保持圖片比例並填滿容器 */
+                margin: 10px;
+            }
+        }
+        @media (max-width: 500px) {
+            .content {
+                padding-top: 35px;
+                width: 100%;
+                text-align: center;
+            }
+            .scrollContent {
+                font-size: 22px;
+            }
+            .albumindex {
+                width: 80%;
+                display: inline-block; /* 讓 <a> 元素以區塊方式呈現 */
+                column-count: 2; /* 設置列數為 2 */
+            }
+            .albumindex a {
+                display: inline-block; /* 讓 <a> 元素以區塊方式呈現 */
+                width: 70%; /* 讓每個 <a> 佔據整個列的寬度 */
+                margin-bottom: 20px; /* 調整 <a> 之間的間距 */            
+            }
+        }
+
+    </style>    
+
+    <div class="marquee">
+        <div class="scrollContent">Welcome to Rain's Album </div>
+    </div>
+    <div class="albumindex">
+        <a href="#" style="text-decoration: none; color: white;" onclick="getAlbum('album01')">
+            <img src="pic/r01.jpg" alt="rain">
+            <div class="albumtitle">個人照</div>
+            <p>5 張相片</p>
+        </a>
+        <a href="#" style="text-decoration: none; color: white;" onclick="getAlbum('album02')">
+            <img src="pic/1.jpg" alt="">
+            <div class="albumtitle">My Goddess</div>
+            <p>20 張相片</p>
+        </a>
+        <a href="#" style="text-decoration: none; color: white;" onclick="getAlbum('album03')">
+            <img src="pic/a01.jpg" alt="">
+            <div class="albumtitle">可愛動物</div>
+            <p>5 張相片</p>
+        </a>
+        <a href="#" style="text-decoration: none; color: white;" onclick="getAlbum('album04')">
+            <img src="pic/i01.jpg" alt="">
+            <div class="albumtitle">0707宜蘭行</div>
+            <p>9 張相片</p>
+        </a>
+        <a href="#" style="text-decoration: none; color: white;" onclick="getAlbum('album05')">
+            <img src="pic/c01.jpg" alt="">
+            <div class="albumtitle">生活雜記</div>
+            <p>12 張相片</p>
+        </a>
+    </div>
+    <div class="albumdetail" id="albumdetail">
+
+    </div>
+    <div class="picdetail" id="picdetail">
+
+    </div>

@@ -1,0 +1,93 @@
+
+<style>
+    body {
+    }
+    .title {
+        display: flex;
+        justify-content: space-between; /* 先設置display為flex後，才可設定分散對齊 */
+        font-family: Arial, sans-serif;
+        color: #fff;
+    }
+    #nameInput {
+        margin: 10px;
+        width: 80%;
+    }
+    #messageInput {
+        width: 95%;
+        margin: 20px;
+    }
+    #messageContainer {
+        margin-top: 20px;
+        display: flex; /* 先設定為flex 才可以將排列方式設置改變 */
+        flex-direction: column-reverse; /* 將容器內元素的排列方向設置為反轉(從下到上) */
+        font-family: Arial, sans-serif;
+    }
+    .message {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 2px 5px;
+        color: #fff;
+    }
+    #submitButton {
+        display: block; /* 讓按鈕成為區塊元素 */
+        margin: auto;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    #submitButton:hover {
+        background-color: #4CA000;
+        color: cyan;
+        border-radius: 5px;
+    }
+    @media (max-width: 500px) {
+        .guestbook {
+            text-align: center;
+        }
+        #nameInput {
+            width: 30%;
+            margin: 0;
+        }
+        .namediv {
+            padding: 30px;
+        }
+        #messageInput {
+            width: 90%;
+            margin: 0;
+        }
+        .message {
+            border: 1px solid #ccc;
+            margin: 0 20px;
+            color: #fff;
+        }
+    }
+</style>
+
+
+<div class="guestbook">
+    <div class="title">
+        <img src="pic/board1.png" alt="" style="width: 100px;">
+        <h1>留言板</h1>
+        <img src="pic/board2.png" alt="" style="width: 100px;">
+    </div>
+    <h4 style="text-align: center; color:#fff;">留下您對這個網頁的建議吧</h4>
+    <div class="namediv">
+        <label for="" style="color:#fff";>您的名字是...</label>
+        <input type="text" id="nameInput" placeholder="請輸入名字"><br>
+    </div>
+    <textarea id="messageInput" rows="6" cols="50" placeholder="請輸入留言"></textarea><br>
+    <button id="submitButton" onclick="submitMessage()">留言</button>
+</div>
+<div id="messageContainer"></div>
+    <div class="message">
+        <span style="color:cyan">hi</span> 留言：<br>
+        test<br>
+        123<br>
+        <strong>2024/03/18 17:32:47</strong>
+    </div>
+    <br>
+<script>
+
+</script>
