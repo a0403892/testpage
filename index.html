@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            margin: 0px;
+            padding: 0px;
+            background: url("/pic/backgroundimg.jpg");
+            background-size: 100%;
+        }
+        .top {
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            height: 100px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: fixed;
+            top: 0; /* 設置top.left.right為0，這樣裡面的東西才不會擠成一團 */
+            left: 0;
+            right: 0;
+            z-index: 99; /* 確保位於其他內容的頂部 */
+        }
+        .top img {
+            height: 60px;
+            margin: 20px;
+            border: 1px solid white;
+        }
+        /* 第二張圖片推到右側 */
+        .top img:last-child {
+            margin-left: auto;
+            cursor: pointer;
+        }
+        .top>h1 {
+            position: absolute;
+            margin-top: -30px;
+        }
+        .top>h3 {
+            position: absolute;
+            margin-top: 50px;
+        }
+        .cartImg:hover {
+            filter: invert(100%)!important;; /* 將圖片的色彩完全反轉 */
+            border-radius: 10px;
+        }
+        .cart {
+            position: fixed;
+            font-size: 24px;
+            top: 19px;
+            right: 19px;
+            width: 300px;
+            height: 200px;
+            padding: 10px;
+            background-color: #fff;
+            color: #000;
+            z-index: 100;
+            display: none;
+            border-radius: 10px;
+        }
+        .cart > button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+        .main {
+            display: flex;
+            width: 960px;
+            margin: auto;
+            margin-top: 100px;
+        }
+        .side {
+            background-color: #ef83e6;
+            opacity: 0.9;
+            text-align: center;
+            padding-right: 39px;
+            font-size: 0; /* 把li標籤前面的點點設置成看不到 */
+        }
+        .side a {
+            font-size: 18px; /* 再把a標籤本身的文字設定大小，不然它會繼承side變為0，就看不到了 */
+            text-decoration: none;
+            padding: 20px;
+            display: block; 
+            margin: auto;
+            width: 100%;
+            transition: 0.5s;
+        }
+        .side a:hover {
+            background-color: rgb(104, 104, 104, 0.8);
+        }
+        .content {
+            background-color: rgb(104, 104, 104, 0.8);
+            height: auto;
+            width: 800px;
+            display: inline-block;
+            font-family: Arial, sans-serif;
+        }
+        .side_1, .side_2, .side_3 {
+            display: none;
+        }
+        .side_1 a {
+            font-size: 14px;
+            color: #fff;
+        }
+        .side_2 a {
+            font-size: 14px;
+            color: #fff;
+        }
+        .side_3 a {
+            font-size: 14px;
+            color: #fff;
+        }
+        .home {
+            text-align: center;
+            padding: 10%;
+        }
+        .home img {
+            width: 90%;
+            animation: disappear 5s ease forwards;
+            animation-delay: 14s;
+        }
+        .hometext {
+            opacity: 0;
+            font-family: fantasy;
+            font-size: 50px;
+            transform: translateY(-300%);
+            animation: appear2 6s ease forwards;
+            animation-delay: 16s;
+        }
+        .hometext2 {
+            display: none;
+        }
+        .marquee-container {
+            position: relative;
+            font-size: 24px;
+            color: #fff;
+            text-align: center;
+        }
+        @keyframes appear {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+                display: none;
+            }
+        }
+        .marquee-content1 {
+            left: 33%;
+            bottom: 55px;
+            position: absolute;
+            animation: appear 4s ease forwards;
+            opacity: 0;
+        }
+        .marquee-content2 {
+            left: 29%;
+            bottom: 55px;
+            position: absolute;
+            animation: appear 4s ease forwards;
+            opacity: 0;
+            animation-delay: 4s;
+        }
+        .marquee-content3 {
+            left: 33%;
+            bottom: 55px;
+            position: absolute;
+            animation: appear 4s ease forwards;
+            opacity: 0;
+            animation-delay: 8s;
+        }
+        .marquee-content4 {
+            left: 32%;
+            bottom: 55px;
+            position: absolute;
+            animation: appear 4s ease forwards;
+            opacity: 0;
+            animation-delay: 12s;
+        }
+        @keyframes disappear {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+        @keyframes appear2 {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .logopng {
+            display: flex;
+            justify-content: center;
+        }
+        .logopng img{
+            height: 40px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .logopng img:hover {
+            opacity: 0.8;
+        }
+        footer {
+            background-color: rgba(200, 200, 200, 0.5);
+            text-align: center;
+            color: #fff;
+        }
+
+        @media (max-width: 1200px) {
+            .top {
+                height: 50px;
+            }
+            .top img {
+                height: 30px;
+                margin: 10px;
+            }
+            .top>h1 {
+                font-size: 18px;
+                margin-top: -20px;
+            }
+            .top>h3 {
+                font-size: 14px;
+                margin-top: 25px;
+            }
+            .cartImg:hover {
+                border-radius: 5px;
+            }
+            .cart {
+                position: fixed;
+                font-size: 18px;
+                top: 9px;
+                right: 9px;
+                width: 150px;
+                height: 100px;
+                padding: 10px;
+                background-color: #fff;
+                color: #000;
+                z-index: 100;
+                display: none;
+                border-radius: 5px;
+            }
+            .cart > button {
+                position: absolute;
+                bottom: 5px;
+                right: 5px;
+            }
+            .main {
+                display: flex;
+                max-width: 740px;
+                margin: auto;
+                margin-top: 50px;
+            }
+            .side {
+                width: 120px;
+            }
+            .side a {
+                font-size: 12px; /* 再把a標籤本身的文字設定大小，不然它會繼承side變為0，就看不到了 */
+                padding: 10px 20px;
+                width: 100%;
+                transition: 0.5s;
+            }
+            #arrowId_1, #arrowId_2, #arrowId_3, #arrowId_4  {
+                font-size: 14px;
+            }
+            .side_1 a {
+                font-size: 10px;
+                color: #fff;
+            }
+            .side_2 a {
+                font-size: 10px;
+                color: #fff;
+            }
+            .side_3 a {
+                font-size: 10px;
+                color: #fff;
+            }
+            .side .webdings {
+                font-size: 10px;
+            }
+            .content {
+                background-color: rgb(104, 104, 104, 0.8);
+                height: auto;
+                width: 800px;
+                display: inline-block;
+                font-family: Arial, sans-serif;
+            }
+            .home {
+                text-align: center;
+                padding: 5%;
+            }
+            .home img {
+                width: 80%;
+                animation: disappear 5s ease forwards;
+                animation-delay: 14s;
+            }
+            .hometext2 {
+                display: none;
+            }
+            .marquee-container {
+                position: relative;
+                font-size: 24px;
+                color: #fff;
+                text-align: center;
+            }
+            .marquee-content1 {
+                left: 28%;
+                bottom: 25px;
+                position: absolute;
+                animation: appear 4s ease forwards;
+                opacity: 0;
+            }
+            .marquee-content2 {
+                left: 22%;
+                bottom: 25px;
+                position: absolute;
+                animation: appear 4s ease forwards;
+                opacity: 0;
+                animation-delay: 4s;
+            }
+            .marquee-content3 {
+                left: 30%;
+                bottom: 25px;
+                position: absolute;
+                animation: appear 4s ease forwards;
+                opacity: 0;
+                animation-delay: 8s;
+            }
+            .marquee-content4 {
+                left: 27%;
+                bottom: 25px;
+                position: absolute;
+                animation: appear 4s ease forwards;
+                opacity: 0;
+                animation-delay: 12s;
+            }
+            .hometext {
+                opacity: 0;
+                font-family: fantasy;
+                transform: translateY(-300%);
+                animation: appear2 6s ease forwards;
+                animation-delay: 16s;
+                font-size: 36px;
+            }
+            .logopng img {
+                width: 30px;
+                height: 30px;
+            }
+            footer {
+                font-size:10px;
+            }
+        }
+        @media (max-width: 500px) {
+            .top {
+                height: 50px;
+            }
+            .top img {
+                height: 30px;
+                margin: 10px;
+                border: 1px solid white;
+            }
+            .top > h1 {
+                font-size: 18px;
+                margin-top: -20px;
+            }
+            .top > h3 {
+                font-size: 14px;
+                margin-top: 25px;
+            }
+            .cartImg:hover {
+                border-radius: 10px;
+            }
+            .cart {
+                position: fixed;
+                font-size: 16px;
+                top: 10px;
+                right: 10px;
+                width: 200px;
+                height: 150px;
+                padding: 5px;
+                background-color: #fff;
+                color: #000;
+                z-index: 100;
+                display: none;
+                border-radius: 5px;
+            }
+            .cart > button {
+                position: absolute;
+                bottom: 5px;
+                right: 5px;
+            }
+            .main {
+                display: block;
+                width: 100%;
+                margin-top: 50px;
+                position: relative;
+            }
+            .side {
+                position: absolute;
+                display: flex;
+                width: 100%;
+                padding: 0; /* 全螢幕版本有設padding-right，手機尺寸要改回來不然版面會亂掉 */
+                justify-content: space-around;
+                background-color: #ef83e6;
+                opacity: .9;
+                z-index: 10;
+                text-align: center;
+            }
+            .autoflex {
+                position: relative;
+                width: 100%;
+            }
+            .side_1 {
+                display: none;
+                position: absolute;
+                width: inherit;
+                background-color: #ddd;
+            }
+            .side_2 {
+                display: none;
+                position: absolute;
+                width: inherit;
+                background-color: #ddd;
+            }
+            .side_3 {
+                display: none;
+                position: absolute;
+                width: inherit;
+                background-color: #ddd;
+            }
+            .side a {
+                font-size: 12px; /* 再把a標籤本身的文字設定大小，不然它會繼承side變為0，就看不到了 */
+                text-decoration: none;
+                padding: 10px 0;
+                display: block; 
+                margin: auto;
+                width: 100%;
+                transition: 0.5s;
+            }
+            .side a:hover {
+                background-color: rgb(104, 104, 104, 0.8);
+            }
+            .side_1 a {
+                font-size: 10px;
+                color: #000;
+            }
+            .side_2 a {
+                font-size: 10px;
+                color: #000;
+            }
+            .side_3 a {
+                font-size: 10px;
+                color: #000;
+            }
+            .content {
+                padding-top: 40px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                height: auto;
+                width: 100%;
+            }
+            .home {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+            }
+            .home img {
+                width: 100%;
+                width: 380px;
+            }
+            .hometext {
+                display: none;
+            }
+            .hometext2 {
+                display: block;
+                position: absolute;
+                opacity: 0;
+                font-family: fantasy;
+                font-size: 36px;
+                animation: appear2 6s ease forwards;
+                animation-delay: 16s;
+            }
+            .marquee-container {
+                width: inherit;
+                font-size: 18px;
+                color: #fff;
+                text-align: center;
+                height: 30px;
+            }
+            .marquee-content1 {
+                /* 全螢幕版設過left跟bottom 要調回來 */
+                left: 0;
+                bottom: 0;
+                width: inherit;
+                animation: appear 4s ease forwards;
+                opacity: 0;
+                height: 130%;
+            }
+            .marquee-content2 {
+                left: 0;
+                bottom: 0;
+                width: inherit;
+                animation: appear 4s ease forwards;
+                opacity: 0;
+                animation-delay: 4s;
+                height: 130%;
+            }
+            .marquee-content3 {
+                left: 0;
+                bottom: 0;
+                width: inherit;
+                animation: appear 4s ease forwards;
+                opacity: 0;
+                animation-delay: 8s;
+                height: 130%;
+            }
+            .marquee-content4 {
+                left: 0;
+                bottom: 0;
+                width: inherit;
+                animation: appear 4s ease forwards;
+                opacity: 0;
+                animation-delay: 12s;
+                height: 130%;
+            }
+
+            .logopng {
+                display: flex;
+                justify-content: center;
+            }
+            .logopng img{
+                height: auto;
+                padding: 10px;
+                cursor: pointer;
+            }
+            .logopng img:hover {
+                opacity: 0.8;
+            }
+            footer {
+                background-color: rgba(200, 200, 200, 0.5);
+                text-align: center;
+                color: #fff;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cart">
+            <div>購物車：0 項商品</div>
+            <hr>
+            <button onclick="closeCart()">關閉</button>
+    </div>
+    <div class="top">
+        <img src="pic/logo/r.jpg" alt="">
+        <h1>歡迎來到我的首頁</h1>
+        <h3 id="currentTime"></h3>
+        <img src="pic/logo/cart.jpg" alt="" onclick="getCart()" class="cartImg">
+    </div>
+    <div class="main">
+        <div class="side">
+            <!-- 在選單加入WEBDINGS字型 -->
+            <!-- 在side_*的後面加上id讓toggleSide的function可以擷取得到 -->
+            <div class="autoflex">
+                <a href="#" onclick="toggleSide('side_1', 1)"><font size="5" face="webdings" id="arrowId_1">4</font>關於我</a>
+                <ul class="side_1">
+                    <li><a href="#" onclick="getData('user', 1);"><font size="4" face="webdings" class='webdings'>%</font>基本資料</a></li>
+                    <li><a href="#" onclick="getData('albumindex', 1);"><font size="4" face="webdings" class='webdings'>l</font>相片集</a></li>
+                </ul>
+            </div>
+            <div class="autoflex">
+                <a href="#" onclick="toggleSide('side_2', 2);"><font size="5" face="webdings" id="arrowId_2">4</font>生活記錄</a>
+                <ul class="side_2">
+                    <li><a href="#" onclick="getData('forsale', 2);"><font size="4" face="webdings" class='webdings'>Z</font>小喵小舖</a></li>
+                    <li><a href="#" onclick="getData('blogindex', 2);"><font size="4" face="webdings" class='webdings'>_</font>小喵佳句</a></li>
+                </ul>
+            </div>
+            <div class="autoflex">
+                <a href="#" onclick="toggleSide('side_3', 3);"><font size="5" face="webdings" id="arrowId_3">4</font>作品集</a>
+                <ul class="side_3">
+                    <li><a href="#" onclick="getData('premiere', 3)"><font size="4" face="webdings" class='webdings'>2</font>Premiere特效</a></li>
+                    <li><a href="#" onclick="getCad()"><font size="4" face="webdings" class='webdings'>&</font>CAD&手繪</a></li>
+                </ul>
+            </div>
+            <div class="autoflex">
+                <a href="#" onclick="getData('guestbook')";><font size="5" face="webdings" id="arrowId_4">4</font>留言板</a>
+            </div>
+        </div>
+        <div class="content" id="content">
+
+            <div class="home">
+                <img src="pic/233833.jpg" alt="">
+                <div class="hometext">
+                    Welcome to Rain's homepage
+                </div>
+                <div class="hometext2">
+                    Welcome to Rain's homepage
+                </div>
+            </div>
+            <div class="marquee-container">
+                <div class="marquee-content1">
+                    每當看見劃破長空的飛機
+                </div>
+                <div class="marquee-content2">
+                    都渴望下一個遠走高飛的是自己
+                </div>
+                <div class="marquee-content3">
+                    但也鼓勵著我無論多辛苦
+                </div>
+                <div class="marquee-content4">
+                    也要為下一個旅程好好生活
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="logopng">
+            <img src="pic/logo/fb.png" alt="">
+            <img src="pic/logo/ig.png" alt="">
+            <img src="pic/logo/line.png" alt="">
+        </div>
+        <span>© 2005 RainYang</span>
+    </footer>
+
+    <script>
+        function toggleSide(className, arrowId) {
+            var element = document.querySelector('.' + className); // 選擇各個side的div讓它的display為block
+            var arrow = document.getElementById('arrowId_' + arrowId); // html區塊已設定了side和arrowId的對應id
+
+            if (element.style.display === 'none' || element.style.display === '') {
+                element.style.display = 'block';
+                if (arrow.textContent === '4') {
+                    arrow.textContent = '6';
+                }
+            } else {
+                element.style.display = 'none';
+                if (arrow.textContent === '6') {
+                    arrow.textContent = '4';
+                }
+            }
+        }
+        function getData(pageName, sideId) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("get", "http://127.0.0.1:8000/"+pageName); //使用get方法連線至頁面名稱.html網址
+            xhr.onload = function() {
+                var content = document.getElementById("content");
+                content.innerHTML = this.responseText;
+
+                // 手機版在內容加載後，隱藏對應的 .sideX 區塊
+                if (window.innerWidth <= 500) {
+                    var sideX = document.querySelector('.side_'+sideId);
+                    var arrow = document.getElementById('arrowId_' + sideId);
+                    if (sideX) {
+                        sideX.style.display = 'none';
+                        arrow.textContent = '4';
+                    }
+                }
+            }
+            xhr.send();
+        }
+        // 購物車按鈕
+        function getCart() {
+            document.querySelector('.cart').style.display = 'block';
+            document.querySelector('.cartImg').style.opacity = '0';
+        }
+        function closeCart() {
+            document.querySelector('.cart').style.display = 'none';
+            document.querySelector('.cartImg').style.opacity = '1';
+        }
+        // 第二本相簿
+        // 需要在album頁面中用到的nextpage和prevpage方法
+        function nextPage() {
+            // 隱藏 .album 區塊
+            document.querySelector('.album').style.display = 'none';
+            // 顯示 .album-2 區塊
+            document.querySelector('.album-2').style.display = 'grid';
+        }
+        function prevPage() {
+            // 隱藏 .album-2 區塊
+            document.querySelector('.album-2').style.display = 'none';
+            // 顯示 .album 區塊
+            document.querySelector('.album').style.display = 'grid';
+        }
+        // 手機版
+        function nextPageM() {
+            // 隱藏 .album 區塊
+            document.querySelector('.album-m1').style.display = 'none';
+            // 顯示 .album-2 區塊
+            document.querySelector('.album-m2').style.display = 'grid';
+        }
+        function prevPageM() {
+            // 隱藏 .album-2 區塊
+            document.querySelector('.album-m2').style.display = 'none';
+            // 顯示 .album 區塊
+            document.querySelector('.album-m1').style.display = 'grid';
+        }
+
+        function getAlbum(pageName) {
+            // 隱藏 .albumindex 區塊
+            document.querySelector('.albumindex').style.display = 'none';
+            var xhr = new XMLHttpRequest();
+            xhr.open("get", "http://127.0.0.1:8000/"+pageName); // 使用get方法連線至頁面名稱.html網址
+            xhr.onload = function() {
+                var content = document.getElementById("albumdetail");
+                content.innerHTML = this.responseText;
+                // // 在這個function中得到nextPage&prevPage方法，並可在進入getAlbum(XXX)頁面中使用
+                // // 一定要這樣設置不然沒辦法再子頁面中再次執行方法 
+                // window.nextPage = nextPage; 
+                // window.prevPage = prevPage;
+            }
+            xhr.send();
+        }
+
+        function getPicture(pictureName) {
+            // 隱藏 .album 區塊
+            document.querySelector('.albumindex').style.display = 'none';
+            document.querySelector('.albumdetail').style.display = 'none';
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("get", "http://127.0.0.1:8000/"+pictureName);
+            xhr.onload = function() {
+                var content = document.getElementById("picdetail");
+                content.innerHTML = this.responseText;
+            }
+            xhr.send();
+        }
+
+        // 顯示彈出視窗
+        function showImage(src) {
+            var model = document.getElementById("albumModel");
+            var modelImg = document.getElementById("modelImg");
+            model.style.display = "block";
+            modelImg.src = src;
+        }
+
+        // 關閉彈出視窗
+        function hideImage() {
+            var model = document.getElementById("albumModel");
+            model.style.display = "none";
+        }
+
+        function forsale(pageName) {
+            // 隱藏 .forsale 區塊
+            document.querySelector('.forsale').style.display = 'none';
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("get", "http://127.0.0.1:8000/"+pageName);
+            xhr.onload = function() {
+                var content = document.querySelector('.forsale');
+                content.style.display = 'block';
+                content.innerHTML = this.responseText;
+
+                // 在內容加載後添加事件監聽器
+                var qtyPlusBtn = document.querySelector('.qtyplus');
+                var qtyMinusBtn = document.querySelector('.qtyminus');
+                var qtyInput = document.querySelector('.qty');
+
+                qtyPlusBtn.addEventListener('click', function() {
+                    qtyInput.value = parseInt(qtyInput.value) + 1;
+                });
+
+                qtyMinusBtn.addEventListener('click', function() {
+                    if (parseInt(qtyInput.value) > 0) {
+                        qtyInput.value = parseInt(qtyInput.value) - 1;
+                    }
+                });
+            }
+            xhr.send();
+        }
+
+        function getArticle(articleName) {
+            var xhr = new XMLHttpRequest();
+            if (articleName === 'article01') {
+                // 隱藏 blog2~3 區塊
+                document.querySelector('.blog02').style.display = 'none';
+                document.querySelector('.blog03').style.display = 'none';
+                document.querySelector('.read01').style.display = 'none';
+                document.querySelector('.blogpage').style.display = 'none';
+                xhr.open("get", "http://127.0.0.1:8000/" + articleName);
+                xhr.onload = function() {
+                    var content = document.getElementById(articleName);
+                    content.innerHTML = this.responseText;
+                };
+                xhr.send();
+            } else if (articleName === 'article02') {
+                // 隱藏 blog1.3 區塊
+                document.querySelector('.blog01').style.display = 'none';
+                document.querySelector('.blog03').style.display = 'none';
+                document.querySelector('.read02').style.display = 'none';
+                document.querySelector('.blogpage').style.display = 'none';
+                xhr.open("get", "http://127.0.0.1:8000/" + articleName);
+                xhr.onload = function() {
+                    var content = document.getElementById(articleName);
+                    content.innerHTML = this.responseText;
+                };
+                xhr.send();
+            } else if (articleName === 'article03') {
+                // 隱藏 blog1~2 區塊
+                document.querySelector('.blog01').style.display = 'none';
+                document.querySelector('.blog02').style.display = 'none';
+                document.querySelector('.read03').style.display = 'none';
+                document.querySelector('.blogpage').style.display = 'none';
+                xhr.open("get", "http://127.0.0.1:8000/" + articleName);
+                xhr.onload = function() {
+                    var content = document.getElementById(articleName);
+                    content.innerHTML = this.responseText;
+                };
+                xhr.send();
+            } else if (articleName === 'article04') {
+                document.querySelector('.read04').style.display = 'none';
+                document.querySelector('.blogpage').style.display = 'none';
+                xhr.open("get", "http://127.0.0.1:8000/" + articleName);
+                xhr.onload = function() {
+                    var content = document.getElementById(articleName);
+                    content.innerHTML = this.responseText;
+                };
+                xhr.send();
+            }
+        }
+
+        function submitMessage() {
+        var name = document.getElementById("nameInput").value;
+        var message = document.getElementById("messageInput").value;
+        var currentTime = getCurrentTime();
+        var messageContainer = document.getElementById("messageContainer");
+        var messageElement = document.createElement("div");
+        if (name !== '') {
+            if (message !== '') {
+                messageElement.classList.add("message");
+                messageElement.innerHTML = '<span style="color:white">' + name + '</span> 留言：<br>' + message.replace(/\n/g, '<br>') + '<br><strong>' + currentTime + '</strong>'; // 將換行符轉換為 <br> 標籤
+                messageContainer.appendChild(messageElement);
+                document.getElementById("messageInput").value = ''; // 清空輸入框
+            }
+            else {
+                alert('請輸入訊息！');
+            }
+        }
+        else {
+            alert('請輸入名字！');
+        }
+    }
+        function getCurrentTime() {
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = padZero(now.getMonth() + 1); // 加 1 是因為月份是從 0 開始的
+            var date = padZero(now.getDate());
+            var hours = padZero(now.getHours());
+            var minutes = padZero(now.getMinutes());
+            var seconds = padZero(now.getSeconds());
+
+            return year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds;
+        }
+        // 補零函數
+        function padZero(num) {
+            return (num < 10 ? '0' : '') + num; // 如果數字小於 10，就補上 0
+        }
+        // 更新時間
+        function updateCurrentTime() {
+            var currentTimeElement = document.getElementById('currentTime');
+            currentTimeElement.textContent = '現在時間：' + getCurrentTime();
+        }
+        // 每秒更新一次時間
+        setInterval(updateCurrentTime, 1000);
+        // 頁面加載時更新時間
+        updateCurrentTime();
+
+        // 這個頁面要先載入後才去執行javascript效果，否則會失效
+        function getCad() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://127.0.0.1:8000/cad");
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var content = document.getElementById("content");
+                    content.innerHTML = xhr.responseText;
+                    // 在子頁面加載完成後執行的js
+                    // 初始化cad頁面的function
+                    initializeCadPage();
+
+                    // 手機版在內容加載後，隱藏對應的 .sideX 區塊
+                    if (window.innerWidth <= 500) {
+                        var arrow3 = document.getElementById('arrowId_3')
+                        var side3 = document.querySelector('.side_3');
+                        if (side3) {
+                            side3.style.display = 'none';
+                            arrow3.textContent = '4';
+                        }
+                    }
+                } else {
+                    console.error("Failed to load CAD page.");
+                }
+            };
+            xhr.send();
+        }
+        var counter = 1;
+
+        // 在子頁面加載完成後執行的初始化函數
+        function initializeCadPage() {
+            
+            function myCad() {
+                document.getElementById('controll-'+counter).checked = true;
+                counter++;
+                if (counter > 4){
+                    counter = 1;
+                }
+                setTimeout(myCad, 4000); // 在函數結束後等待4秒再次調用自身
+            }
+            // 在子頁面加載時執行
+            myCad();
+        }
+
+    </script>
+</body>
+</html>
