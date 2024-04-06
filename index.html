@@ -657,7 +657,7 @@
         }
         function getData(pageName, sideId) {
             var xhr = new XMLHttpRequest();
-            xhr.open("get", "http://127.0.0.1:8000/"+pageName); //使用get方法連線至頁面名稱.html網址
+            xhr.open("get", "https://a0403892.github.io/testpage/"+pageName); //使用get方法連線至頁面名稱.html網址
             xhr.onload = function() {
                 var content = document.getElementById("content");
                 content.innerHTML = this.responseText;
@@ -715,7 +715,7 @@
             // 隱藏 .albumindex 區塊
             document.querySelector('.albumindex').style.display = 'none';
             var xhr = new XMLHttpRequest();
-            xhr.open("get", "http://127.0.0.1:8000/"+pageName); // 使用get方法連線至頁面名稱.html網址
+            xhr.open("get", "https://a0403892.github.io/testpage/"+pageName); // 使用get方法連線至頁面名稱.html網址
             xhr.onload = function() {
                 var content = document.getElementById("albumdetail");
                 content.innerHTML = this.responseText;
@@ -733,7 +733,7 @@
             document.querySelector('.albumdetail').style.display = 'none';
 
             var xhr = new XMLHttpRequest();
-            xhr.open("get", "http://127.0.0.1:8000/"+pictureName);
+            xhr.open("get", "https://a0403892.github.io/testpage/"+pictureName);
             xhr.onload = function() {
                 var content = document.getElementById("picdetail");
                 content.innerHTML = this.responseText;
@@ -760,7 +760,7 @@
             document.querySelector('.forsale').style.display = 'none';
 
             var xhr = new XMLHttpRequest();
-            xhr.open("get", "http://127.0.0.1:8000/"+pageName);
+            xhr.open("get", "https://a0403892.github.io/testpage/"+pageName);
             xhr.onload = function() {
                 var content = document.querySelector('.forsale');
                 content.style.display = 'block';
@@ -792,7 +792,7 @@
                 document.querySelector('.blog03').style.display = 'none';
                 document.querySelector('.read01').style.display = 'none';
                 document.querySelector('.blogpage').style.display = 'none';
-                xhr.open("get", "http://127.0.0.1:8000/" + articleName);
+                xhr.open("get", "https://a0403892.github.io/testpage/" + articleName);
                 xhr.onload = function() {
                     var content = document.getElementById(articleName);
                     content.innerHTML = this.responseText;
@@ -804,7 +804,7 @@
                 document.querySelector('.blog03').style.display = 'none';
                 document.querySelector('.read02').style.display = 'none';
                 document.querySelector('.blogpage').style.display = 'none';
-                xhr.open("get", "http://127.0.0.1:8000/" + articleName);
+                xhr.open("get", "https://a0403892.github.io/testpage/" + articleName);
                 xhr.onload = function() {
                     var content = document.getElementById(articleName);
                     content.innerHTML = this.responseText;
@@ -816,7 +816,7 @@
                 document.querySelector('.blog02').style.display = 'none';
                 document.querySelector('.read03').style.display = 'none';
                 document.querySelector('.blogpage').style.display = 'none';
-                xhr.open("get", "http://127.0.0.1:8000/" + articleName);
+                xhr.open("get", "https://a0403892.github.io/testpage/" + articleName);
                 xhr.onload = function() {
                     var content = document.getElementById(articleName);
                     content.innerHTML = this.responseText;
@@ -825,7 +825,7 @@
             } else if (articleName === 'article04') {
                 document.querySelector('.read04').style.display = 'none';
                 document.querySelector('.blogpage').style.display = 'none';
-                xhr.open("get", "http://127.0.0.1:8000/" + articleName);
+                xhr.open("get", "https://a0403892.github.io/testpage/" + articleName);
                 xhr.onload = function() {
                     var content = document.getElementById(articleName);
                     content.innerHTML = this.responseText;
@@ -883,7 +883,7 @@
         // 這個頁面要先載入後才去執行javascript效果，否則會失效
         function getCad() {
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://127.0.0.1:8000/cad");
+            xhr.open("GET", "https://a0403892.github.io/testpage/cad");
             xhr.onload = function() {
                 if (xhr.status === 200) {
                     var content = document.getElementById("content");
