@@ -843,7 +843,7 @@
         if (name !== '') {
             if (message !== '') {
                 messageElement.classList.add("message");
-                messageElement.innerHTML = '<span style="color:white">' + name + '</span> 留言：<br>' + message.replace(/\n/g, '<br>') + '<br><strong>' + currentTime + '</strong>'; // 將換行符轉換為 <br> 標籤
+                messageElement.innerHTML = '<span style="color:aqua">' + name + '</span> 留言：<br>' + message.replace(/\n/g, '<br>') + '<br><strong>' + currentTime + '</strong>'; // 將換行符轉換為 <br> 標籤
                 messageContainer.appendChild(messageElement);
                 document.getElementById("messageInput").value = ''; // 清空輸入框
             }
